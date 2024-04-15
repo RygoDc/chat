@@ -10,6 +10,7 @@ import java.awt.TextArea;
 import java.awt.TextField;
 
 import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 
 import lombok.Data;
 
@@ -26,10 +27,10 @@ public class VentanaChat extends Frame {
 		setLayout(new BorderLayout());
 		setVisible(true);
 		
-		barraSuperior();
-		barraInferior();
-		barraIzquierda();
-		barraCentral();
+		//barraSuperior();
+		//barraInferior();
+		//barraIzquierda();
+		//barraCentral();
 		
 	}
 	
@@ -64,14 +65,16 @@ public class VentanaChat extends Frame {
 		PSuperiorIzquierda = new Panel();
 		PInferiorIzquierda = new Panel();
 		LUsuarios = new Label("Usuarios");
-		TAUsuarios = new TextArea();
+		TAUsuarios = new TextArea(30,30);
 		
 		PIzquierda.setBackground(Color.green);
 		PIzquierda.setVisible(true);
 		add(PIzquierda, BorderLayout.WEST);
-		getPIzquierda().setLayout(new BoxLayout(getPIzquierda(),BoxLayout.PAGE_AXIS));
-		getPIzquierda().add(getPSuperiorIzquierda().add(getLUsuarios()));
-		getPIzquierda().add(getPInferiorIzquierda().add(getTAUsuarios()));
+		getPIzquierda().setLayout(new BorderLayout());
+		getPSuperiorIzquierda().add(getLUsuarios());
+		
+		getPIzquierda().add(getPSuperiorIzquierda(),BorderLayout.NORTH);
+		getPIzquierda().add(getTAUsuarios());
 	}
 	
 	void barraCentral() {
@@ -79,6 +82,7 @@ public class VentanaChat extends Frame {
 		TAMensajes = new TextArea();
 		PCentral.setBackground(Color.black);
 		PCentral.setVisible(true);
+		getPCentral().setLayout(new BorderLayout());
 		add(PCentral, BorderLayout.CENTER);
 		getPCentral().add(getTAMensajes());
 	}
